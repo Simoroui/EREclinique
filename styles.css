@@ -1599,7 +1599,7 @@ footer {
 .dr-safa-section {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8f9f0, #e8f5ef);
+    background: linear-gradient(135deg, #f5f5dc, #e8d8c3); /* Dégradé beige crème */
     padding: 6rem 2rem;
     overflow: hidden;
     z-index: 2;
@@ -1612,11 +1612,29 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/subtle-pattern.png');
+    background-image: url('images/motif-relief.jpg'); /* Utilisation de l'image de motif en relief */
     background-repeat: repeat;
-    background-size: 150px;
-    opacity: 0.06;
+    background-size: 350px;
+    opacity: 0.07; /* Légèrement plus visible */
     z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: multiply; /* Meilleure intégration du motif */
+}
+
+/* Ajout d'un deuxième motif en overlay pour renforcer l'effet de relief */
+.dr-safa-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(245, 245, 220, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(245, 245, 220, 0.6) 0%, transparent 60%),
+        radial-gradient(circle at 40% 80%, rgba(245, 245, 220, 0.4) 0%, transparent 40%);
+    opacity: 0.8;
+    z-index: 1;
     pointer-events: none;
 }
 
@@ -1627,7 +1645,7 @@ footer {
     margin: 0 auto;
     gap: 4rem;
     position: relative;
-    z-index: 5;
+    z-index: 5; /* Au-dessus des pseudos-éléments */
     perspective: 1000px;
 }
 
