@@ -156,24 +156,24 @@ section {
 .keyword-1 {
     transition: opacity 0.75s ease 1.25s;
     align-self: flex-start;
-    background: rgba(0,0,0,0.2);
-    border-radius: 8px;
+    background: transparent;
+    border-radius: 0;
     padding: 10px 20px;
 }
 
 .keyword-2 {
     transition: opacity 0.75s ease 1.75s;
     align-self: center;
-    background: rgba(0,0,0,0.3);
-    border-radius: 8px;
+    background: transparent;
+    border-radius: 0;
     padding: 10px 20px;
 }
 
 .keyword-3 {
     transition: opacity 0.75s ease 2.25s;
     align-self: flex-end;
-    background: rgba(0,0,0,0.2);
-    border-radius: 8px;
+    background: transparent;
+    border-radius: 0;
     padding: 10px 20px;
 }
 
@@ -516,7 +516,7 @@ section {
     z-index: 1;
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    font-family: 'Arial', sans-serif;
+    font-family: 'Bodoni Moda', 'Didot', serif;
     letter-spacing: -10px;
     pointer-events: none;
 }
@@ -767,7 +767,10 @@ footer {
     }
     
     .ere-letters {
-        font-size: 6rem;
+        font-size: 8rem;
+        opacity: 0.25;
+        font-weight: 900;
+        letter-spacing: -2px;
     }
     
     .ere-container {
@@ -790,14 +793,12 @@ footer {
     }
     
     .ere-letter {
-        font-size: 8rem;
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        opacity: 0.2;
-        text-shadow: none;
-        transform: translateY(-50%);
-        z-index: 1;
+        font-size: 6rem;
+        left: -5px;
+        color: rgba(23, 78, 70, 0.25);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        font-family: 'Bodoni Moda', 'Didot', serif;
+        font-weight: 700;
     }
     
     .ere-content {
@@ -870,9 +871,20 @@ footer {
         min-width: 250px;
     }
     
+    .ere-letters {
+        font-size: 7rem;
+        opacity: 0.35;
+        font-weight: 900;
+        letter-spacing: -1px;
+    }
+    
     .ere-letter {
-        font-size: 6rem;
-        left: -5px;
+        font-size: 7rem;
+        left: -10px;
+        color: rgba(23, 78, 70, 0.4);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        font-weight: 900;
+        font-family: 'Bodoni Moda', 'Didot', serif;
     }
     
     .ere-content {
