@@ -26,4 +26,4 @@ Site web vitrine pour la clinique ERE, spécialisée en bien-être, nutrition et
 
 ## Déploiement
 
-Le site est déployé via GitHub Pages et accessible à l'adresse: [https://simoroui.github.io/EREclinique](https://simoroui.github.io/EREclinique) 
+Le site est déployé via GitHub Pages et accessible à l'adresse: [https://simoroui.github.io/EREclinique](https://simoroui.github.io/EREclinique)
