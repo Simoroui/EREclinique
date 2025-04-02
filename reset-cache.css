@@ -1,11 +1,11 @@
 /* 
-* Force reload applied - version 4.6 
+* Force reload applied - version 5.4 
 * Date: 2023-08-08
 */
 
 :root {
-    --cache-version: 4.6;
-    --cache-reset: "hero-title-keywords-nav-about-grown-font-ere-method-4.6";
+    --cache-version: 5.4;
+    --cache-reset: "hero-title-keywords-nav-about-grown-font-ere-method-5.4";
 } 
 
 /* Hero title background styles */
@@ -65,4 +65,82 @@
     font-family: 'Grown', 'Playfair Display', serif !important;
     letter-spacing: 0.02em !important;
     font-weight: normal !important;
+}
+
+/* ERE elements title styles */
+.ere-content h3 {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: normal !important;
+    text-transform: uppercase !important;
+    font-size: 1.6rem !important;
+}
+
+/* Individual E-R-E letters in each element - for all devices */
+.ere-letter {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    font-weight: 900 !important;
+    color: rgba(23, 78, 70, 0.15) !important;
+}
+
+/* Desktop version of individual E-R-E letters */
+@media (min-width: 769px) {
+    .ere-letter {
+        font-size: 18rem !important;
+        left: -80px !important;
+        letter-spacing: -5px !important;
+    }
+}
+
+/* Mobile version of individual E-R-E letters */
+@media (max-width: 768px) {
+    .ere-letter {
+        font-size: 6rem !important;
+        left: -5px !important;
+    }
+}
+
+/* Small mobile version of individual E-R-E letters */
+@media (max-width: 480px) {
+    .ere-letter {
+        font-size: 7rem !important;
+        left: -10px !important;
+        color: rgba(23, 78, 70, 0.3) !important;
+    }
+}
+
+/* ERE background letters styles - for all devices */
+.ere-letters {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.2em !important;
+}
+
+/* ERE background letters styles - desktop only */
+@media (min-width: 769px) {
+    .ere-letters {
+        font-size: 22rem !important;
+        opacity: 0.12 !important;
+        letter-spacing: 0.15em !important;
+    }
+}
+
+/* Dr Safa section styles */
+.dr-safa-title,
+#dr-safa .dr-safa-title {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: normal !important;
+}
+
+/* Smaller logo for mobile only */
+@media (max-width: 768px) {
+    .logo-container {
+        max-width: 220px !important;
+        padding: 8px !important;
+    }
+    
+    .logo-image {
+        max-width: 200px !important;
+    }
 } 

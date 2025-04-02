@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css?v=2.0">
     <link rel="stylesheet" href="dr-safa.css?v=3.1">
     <link rel="stylesheet" href="refresh.css?v=1.8">
-    <link rel="stylesheet" href="reset-cache.css?v=4.6">
+    <link rel="stylesheet" href="reset-cache.css?v=5.4">
     <link rel="stylesheet" href="force-reload.css?v=1.1">
     <link rel="stylesheet" href="grown.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -57,7 +57,7 @@
     <section id="accueil" class="hero-section">
         <img src="images/accueil.avif" alt="ERE Clinique - Hero" class="hero-image">
         <div class="hero-content">
-            <h1 class="hero-title grown-font" style="font-family: 'Grown', 'Playfair Display', serif !important; background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15)) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; padding: 20px 30px !important; border-radius: 15px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;">Bienvenue à la Clinique ERE</h1>
+            <h1 class="hero-title grown-font" style="font-family: 'Grown', 'Playfair Display', serif !important; background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15)) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; padding: 20px 30px !important; border-radius: 15px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;">Bienvenue chez Ere Clinique</h1>
             <div class="hero-keywords">
                 <span class="keyword keyword-1" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Diète</span>
                 <span class="keyword keyword-2" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Nutrition du sportif</span>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="dr-safa-content">
-                <h2 class="dr-safa-title">Dr Safa DOGHRI</h2>
+                <h2 class="dr-safa-title" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: normal !important;">Dr Safa DOGHRI</h2>
                 <div class="dr-safa-subtitle">Diabétologie et Nutrition</div>
                 <div class="dr-safa-separator"></div>
                 <p class="dr-safa-description">
@@ -352,7 +352,7 @@
             if (logoOverlay && heroTitle) {
                 // Position initiale en dessous du titre (pas besoin d'offset vertical supplémentaire)
                 logoOverlay.style.opacity = "0"; // Complètement invisible au départ
-                logoOverlay.style.transform = "translateY(0)"; // Pas de transformation initiale
+                logoOverlay.style.transform = "translateX(0)"; // Pas de transformation initiale
                 console.log("Logo positionné en dessous du titre et invisible");
             }
             
@@ -430,7 +430,7 @@
                     if (currentScrollPosition <= scrollThreshold) {
                         // Avant le seuil de défilement, logo invisible
                         logoOverlay.style.opacity = "0";
-                        logoOverlay.style.transform = "translateY(0)";
+                        logoOverlay.style.transform = "translateX(0)";
                     } else {
                         // Après le seuil, logo visible
                         
@@ -459,7 +459,7 @@
                         
                         // Appliquer les transformations
                         logoOverlay.style.opacity = logoOpacity;
-                        logoOverlay.style.transform = "translateY(" + targetPosition + "px)";
+                        logoOverlay.style.transform = "translateX(" + (-targetPosition) + "px)";
                     }
                 }
                 
