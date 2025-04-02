@@ -1,0 +1,7 @@
+/* Force refresh for citation transparency - v1.1 */
+:root {
+    --force-refresh: "citation-transparent-grown-font";
+    --citation-bg: rgba(255, 255, 255, 0.65);
+    --citation-blur: 8px;
+    --hero-title-font: 'Grown';
+} 

@@ -1,0 +1,63 @@
+/* 
+* Force reload applied - version 4.5 
+* Date: 2023-08-08
+*/
+
+:root {
+    --cache-version: 4.5;
+    --cache-reset: "hero-title-keywords-nav-about-grown-font-ere-method-4.5";
+} 
+
+/* Hero title background styles */
+.hero-title {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 20px 30px !important;
+    font-family: 'Grown', 'Playfair Display', serif !important;
+}
+
+/* Keywords styles */
+.keyword {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 500 !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Navigation links styles */
+.nav-links a {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 500 !important;
+    padding: 0.3rem 0.5rem !important;
+    font-size: 1.15em !important;
+}
+
+/* About section styles */
+#about .parallax-content {
+    background-color: rgba(23, 78, 70, 0.7) !important;
+}
+
+#about h2,
+#about p,
+#about .about-item h3,
+#about .about-item p {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    font-weight: normal !important;
+}
+
+/* Méthode ERE section styles */
+.ere-title, 
+#methode-ere .ere-title {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: normal !important;
+} 

@@ -1,0 +1,24 @@
+/* Police Grown pour le titre principal - v1.1 */
+@font-face {
+    font-family: 'Grown';
+    src: url('Grown.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Backup depuis différentes sources */
+@font-face {
+    font-family: 'Grown';
+    src: url('https://allfont.net/cache/fonts/grown_4f8f45c09d6db3a128b4477dbc2f9a69.woff') format('woff'),
+         url('https://allfont.net/cache/fonts/grown_4f8f45c09d6db3a128b4477dbc2f9a69.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.grown-font {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em;
+    font-weight: normal;
+} 

@@ -1,0 +1,179 @@
+#dr-safa .dr-safa-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+    border: none;
+    background: none;
+    box-shadow: none;
+    filter: none;
+    display: block !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 1;
+    transform: translateY(0); /* Position initiale */
+}
+
+#dr-safa .dr-safa-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: visible !important;
+    border: none;
+    background: none;
+    box-shadow: none !important;
+    border-radius: 0;
+    display: block !important;
+    margin-bottom: -80px !important; /* Chevauchement avec la citation pour toutes les tailles d'écran */
+    z-index: 1;
+}
+
+#dr-safa .dr-safa-image-container {
+    flex: 1 1 400px;
+    min-width: 300px;
+    position: relative;
+    z-index: 1;
+}
+
+#dr-safa .dr-safa-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    border: none;
+    background: none;
+    box-shadow: none;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Citation - visible sur toutes les versions avec fond transparent */
+#dr-safa .dr-safa-quote {
+    display: block !important;
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: -60px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.45)) !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
+    padding: 2rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+#dr-safa .dr-safa-quote blockquote,
+#dr-safa .dr-safa-quote cite {
+    display: block !important;
+    background: transparent !important;
+}
+
+#dr-safa .dr-safa-quote blockquote {
+    color: #2E7D32 !important;
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+#dr-safa .dr-safa-quote cite {
+    color: #333 !important;
+    font-style: normal;
+    display: block;
+    text-align: right;
+    font-weight: 500;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Suppression des classes de débogage */
+.dr-safa-debug,
+.dr-safa-quote-debug,
+.dr-safa-image-debug,
+.dr-safa-blockquote-debug,
+.dr-safa-cite-debug {
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Contenu textuel */
+#dr-safa .dr-safa-content {
+    flex: 1 1 600px;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    text-align: left;
+}
+
+/* Centrer le texte */
+#dr-safa .dr-safa-title,
+#dr-safa .dr-safa-subtitle {
+    text-align: center;
+}
+
+#dr-safa .dr-safa-separator {
+    margin: 1rem auto;
+}
+
+#dr-safa .dr-safa-description {
+    text-align: justify;
+}
+
+/* Force l'overflow visible sur tous les conteneurs */
+#dr-safa .container,
+#dr-safa,
+.dr-safa-section,
+body {
+    overflow-x: visible !important;
+}
+
+/* Styles spécifiques pour mobile uniquement */
+@media (max-width: 768px) {
+    #dr-safa .dr-safa-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #dr-safa .dr-safa-image-container {
+        max-width: 100%;
+    }
+    
+    #dr-safa .dr-safa-content {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    #dr-safa .dr-safa-title,
+    #dr-safa .dr-safa-subtitle {
+        text-align: center;
+    }
+    
+    #dr-safa .dr-safa-separator {
+        margin: 1rem auto;
+    }
+}
+
+/* Vérifier que les styles s'appliquent aussi sur desktop */
+@media (min-width: 769px) {
+    #dr-safa .dr-safa-title,
+    #dr-safa .dr-safa-subtitle {
+        text-align: left;
+    }
+    
+    #dr-safa .dr-safa-separator {
+        margin: 1rem 0;
+    }
+    
+    #dr-safa .dr-safa-container {
+        flex-direction: row !important;
+    }
+} 

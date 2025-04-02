@@ -1,0 +1,128 @@
+.dr-safa-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    will-change: transform, opacity;
+}
+
+.dr-safa-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dr-safa-quote {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    will-change: transform, opacity;
+    z-index: 2;
+}
+
+.dr-safa-quote.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dr-safa-quote blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    position: relative;
+    padding: 0 2rem;
+}
+
+.dr-safa-quote blockquote::before,
+.dr-safa-quote blockquote::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    position: absolute;
+    font-family: Georgia, serif;
+}
+
+.dr-safa-quote blockquote::before {
+    left: -10px;
+    top: -1rem;
+}
+
+.dr-safa-quote blockquote::after {
+    right: -10px;
+    bottom: -2rem;
+}
+
+.dr-safa-quote cite {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-style: normal;
+    display: block;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .dr-safa-quote {
+        position: relative;
+        bottom: 0;
+        margin-top: 2rem;
+        transform: none;
+        left: 0;
+        width: 100%;
+        opacity: 1;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.4)) !important;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+        z-index: 2;
+    }
+    
+    .dr-safa-quote::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 70%),
+                    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.9), transparent 70%);
+        border-radius: 10px;
+        z-index: -1;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    
+    .dr-safa-quote.visible {
+        transform: none;
+    }
+    
+    .dr-safa-quote blockquote {
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+    
+    .dr-safa-quote blockquote::before,
+    .dr-safa-quote blockquote::after {
+        opacity: 0.5;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+    
+    .dr-safa-quote cite {
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+} 

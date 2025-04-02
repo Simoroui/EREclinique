@@ -1,0 +1,270 @@
+/* Styles pour forcer le fond transparent avec dégradé sur la citation mobile */
+/* Styles pour les écrans de toute taille (pas seulement mobile) */
+.dr-safa-quote,
+#dr-safa .dr-safa-quote,
+.dr-safa-image-wrapper .dr-safa-quote {
+    display: block !important;
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 2rem !important;
+    transform: none !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)) !important;
+    background-color: transparent !important;
+    padding: 2rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.dr-safa-quote::before,
+#dr-safa .dr-safa-quote::before,
+.dr-safa-image-wrapper .dr-safa-quote::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 70%),
+                radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.4), transparent 70%) !important;
+    border-radius: 10px !important;
+    z-index: -1 !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+}
+
+.dr-safa-quote blockquote,
+#dr-safa .dr-safa-quote blockquote,
+.dr-safa-image-wrapper .dr-safa-quote blockquote {
+    display: block !important;
+    font-size: 1.2rem !important;
+    font-style: italic !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+    color: #2E7D32 !important;
+    position: relative !important;
+    padding: 0 2rem !important;
+    transform: none !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+    background: transparent !important;
+}
+
+.dr-safa-quote blockquote::before,
+.dr-safa-quote blockquote::after,
+#dr-safa .dr-safa-quote blockquote::before,
+#dr-safa .dr-safa-quote blockquote::after,
+.dr-safa-image-wrapper .dr-safa-quote blockquote::before,
+.dr-safa-image-wrapper .dr-safa-quote blockquote::after {
+    content: '"' !important;
+    font-size: 3rem !important;
+    color: #4CAF50 !important;
+    opacity: 0.3 !important;
+    position: absolute !important;
+    font-family: Georgia, serif !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    background: transparent !important;
+}
+
+.dr-safa-quote blockquote::before,
+#dr-safa .dr-safa-quote blockquote::before,
+.dr-safa-image-wrapper .dr-safa-quote blockquote::before {
+    left: -10px !important;
+    top: -1rem !important;
+}
+
+.dr-safa-quote blockquote::after,
+#dr-safa .dr-safa-quote blockquote::after,
+.dr-safa-image-wrapper .dr-safa-quote blockquote::after {
+    right: -10px !important;
+    bottom: -2rem !important;
+}
+
+.dr-safa-quote cite,
+#dr-safa .dr-safa-quote cite,
+.dr-safa-image-wrapper .dr-safa-quote cite {
+    display: block !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    font-style: normal !important;
+    margin-top: 1rem !important;
+    font-weight: 500 !important;
+    transform: none !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+    background: transparent !important;
+}
+
+/* Styles supplémentaires pour forcer la transparence et l'effet flouté - v1.4 */
+
+/* Force l'effet flouté et la transparence de la citation Dr. Safa */
+.dr-safa-quote {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.45)) !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+.dr-safa-quote blockquote,
+.dr-safa-quote cite {
+    background: transparent !important;
+}
+
+.dr-safa-quote blockquote {
+    font-weight: 500 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+    color: #2E7D32 !important;
+}
+
+.dr-safa-quote cite {
+    font-weight: 500 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+    color: #333 !important;
+}
+
+/* Force refresh for citation transparency - v1.3 */
+:root {
+    --force-refresh: "citation-transparent-grown-font-hero-bg-keywords-nav";
+    --citation-bg: rgba(255, 255, 255, 0.65);
+    --citation-blur: 8px;
+    --hero-title-font: 'Grown';
+    --hero-title-bg: rgba(255, 255, 255, 0.25);
+    --hero-keywords-font: 'Grown';
+    --nav-links-font: 'Grown';
+}
+
+/* Styles pour le fond flouté du titre hero */
+.hero-title {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5) !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 20px 30px !important;
+}
+
+/* Styles pour les mots-clés hero */
+.keyword {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 500 !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(46, 139, 87, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.keyword:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .hero-title {
+        padding: 15px 20px !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.2)) !important;
+    }
+    
+    .keyword {
+        font-size: 1.5rem !important;
+        padding: 8px 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .keyword {
+        font-size: 1.3rem !important;
+        padding: 6px 12px !important;
+    }
+}
+
+/* Styles pour les liens de navigation */
+.nav-links a {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 500 !important;
+    transition: color 0.3s ease, transform 0.2s ease !important;
+    display: inline-block !important;
+    padding: 0.3rem 0.5rem !important;
+    position: relative !important;
+    font-size: 1.15em !important;
+}
+
+.nav-links a:hover {
+    color: var(--color-soft-green) !important;
+    transform: translateY(-2px) !important;
+}
+
+.nav-links a::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: var(--color-soft-green) !important;
+    transition: width 0.3s ease !important;
+}
+
+.nav-links a:hover::after {
+    width: 100% !important;
+}
+
+/* Styles pour la section À propos avec police Grown */
+#about .parallax-content {
+    background-color: rgba(23, 78, 70, 0.7) !important;
+}
+
+#about h2,
+#about p,
+#about .about-item h3,
+#about .about-item p {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: normal !important;
+}
+
+#about h2 {
+    font-weight: normal !important;
+    font-size: 3rem !important;
+}
+
+#about p {
+    font-weight: normal !important;
+}
+
+#about .about-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#about .about-item:hover {
+    transform: translateY(-10px) scale(1.05) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+#about .about-item i {
+    color: var(--color-cream) !important;
+}
+
+/* Styles pour le titre de la section Méthode ERE */
+.ere-title, 
+#methode-ere .ere-title {
+    font-family: 'Grown', 'Playfair Display', serif !important;
+    letter-spacing: 0.02em !important;
+    font-weight: normal !important;
+} 

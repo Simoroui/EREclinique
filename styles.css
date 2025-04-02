@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Didot:wght@400&display=swap');
+@import url('https://allfont.net/allfont.css?fonts=grown');
 
 :root {
     --color-cream: #F5F5DC;
@@ -74,11 +75,33 @@ section {
     text-decoration: none;
     color: var(--color-dark-green);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-family: 'Grown', 'Playfair Display', serif;
+    letter-spacing: 0.02em;
+    padding: 0.3rem 0.5rem;
+    position: relative;
+    display: inline-block;
+    font-size: 1.15em;
 }
 
 .nav-links a:hover {
     color: var(--color-soft-green);
+    transform: translateY(-2px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-soft-green);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Section Accueil */
@@ -109,7 +132,7 @@ section {
     position: relative;
     z-index: 3;
     color: white;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Grown', 'Playfair Display', serif !important;
     font-size: 4.5rem;
     text-align: center;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
@@ -118,6 +141,15 @@ section {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.75s ease;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content {
@@ -141,10 +173,10 @@ section {
 
 .keyword {
     display: block;
-    color: white;
+    color: #2E8B57;
     font-size: 1.8rem;
-    font-weight: 700;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
     opacity: 0;
     transform: translateY(20px);
     position: relative;
@@ -153,29 +185,33 @@ section {
     transition: opacity 0.75s ease;
     border-bottom: 3px solid #2E8B57;
     text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Grown', 'Playfair Display', serif;
+    letter-spacing: 0.02em;
 }
 
 .keyword-1 {
     transition: opacity 0.75s ease 1.25s;
     align-self: flex-start;
-    background: transparent;
-    border-radius: 0;
+    border-radius: 8px;
     padding: 10px 20px;
 }
 
 .keyword-2 {
     transition: opacity 0.75s ease 1.75s;
     align-self: center;
-    background: transparent;
-    border-radius: 0;
+    border-radius: 8px;
     padding: 10px 20px;
 }
 
 .keyword-3 {
     transition: opacity 0.75s ease 2.25s;
     align-self: flex-end;
-    background: transparent;
-    border-radius: 0;
+    border-radius: 8px;
     padding: 10px 20px;
 }
 
@@ -254,7 +290,7 @@ section {
     padding: 3rem;
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba(46, 139, 87, 0.7);
+    background-color: rgba(23, 78, 70, 0.7);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
@@ -267,6 +303,7 @@ section {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease forwards;
+    font-family: 'Grown', 'Playfair Display', serif;
 }
 
 #about p {
@@ -276,6 +313,7 @@ section {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 1s ease forwards 0.5s;
+    font-family: 'Grown', 'Playfair Display', serif;
 }
 
 .about-details {
@@ -307,13 +345,14 @@ section {
 
 .about-item i {
     font-size: 2.5rem;
-    color: var(--color-soft-green);
+    color: var(--color-cream);
     margin-bottom: 1rem;
 }
 
 .about-item h3 {
     color: var(--color-cream);
     margin-bottom: 0.5rem;
+    font-family: 'Grown', 'Playfair Display', serif;
 }
 
 .about-item p {
@@ -321,6 +360,7 @@ section {
     animation: none;
     opacity: 1;
     transform: none;
+    font-family: 'Grown', 'Playfair Display', serif;
 }
 
 /* Transition entre sections */
@@ -1601,7 +1641,7 @@ footer {
     min-height: 100vh;
     background: linear-gradient(135deg, #f5f5dc, #e8d8c3); /* Dégradé beige crème */
     padding: 6rem 2rem;
-    overflow: hidden;
+    overflow: visible;
     z-index: 2;
 }
 
@@ -1645,8 +1685,8 @@ footer {
     margin: 0 auto;
     gap: 4rem;
     position: relative;
-    z-index: 5; /* Au-dessus des pseudos-éléments */
-    perspective: 1000px;
+    z-index: 5; 
+    perspective: none;
 }
 
 .dr-safa-image-container {
@@ -1656,7 +1696,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    transform-style: preserve-3d;
+    transform-style: flat;
 }
 
 .dr-safa-image-wrapper {
@@ -1665,60 +1705,36 @@ footer {
     max-width: 450px;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.15),
-        0 10px 20px rgba(0, 0, 0, 0.1);
-    transform: translateZ(50px) perspective(1000px);
+    box-shadow: none;
+    transform: none;
     transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Suppression du fond vert transparent */
 .dr-safa-image-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(46, 139, 87, 0.2) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
+    display: none;
 }
 
+/* Suppression du cadre vert */
 .dr-safa-image-wrapper::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: calc(100% + 20px);
-    height: calc(100% + 20px);
-    border: 2px solid var(--color-dark-green);
-    border-radius: 25px;
-    opacity: 0.3;
-    z-index: -1;
-    transform: translateZ(-10px);
+    display: none;
 }
 
 .dr-safa-image {
     width: 100%;
     height: auto;
     display: block;
-    transform: scale(1.01);
+    transform: none;
     transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .dr-safa-image-wrapper:hover .dr-safa-image {
-    transform: scale(1.08);
+    transform: none;
 }
 
 .dr-safa-image-wrapper:hover {
-    transform: translateZ(60px) rotateX(2deg) rotateY(5deg);
-    box-shadow: 
-        0 35px 60px rgba(0, 0, 0, 0.2),
-        0 15px 30px rgba(0, 0, 0, 0.12);
+    transform: none;
+    box-shadow: none;
 }
 
 .dr-safa-content {
@@ -1909,6 +1925,83 @@ footer {
     
     .qualification-item span {
         font-size: 0.9rem;
+    }
+    
+    /* Citation en version mobile avec fond dégradé transparent */
+    .dr-safa-image-wrapper .dr-safa-quote {
+        display: block !important;
+        position: relative !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)) !important;
+        background-color: transparent !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
+        backdrop-filter: blur(1px) !important;
+        -webkit-backdrop-filter: blur(1px) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03) !important;
+        padding: 2rem !important;
+        margin-top: 2rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 70%),
+                    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.9), transparent 70%);
+        border-radius: 10px;
+        z-index: -1;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote blockquote {
+        display: block !important;
+        font-size: 1.2rem;
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: #2E7D32;
+        position: relative;
+        padding: 0 2rem;
+        transform: none !important;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote blockquote::before,
+    .dr-safa-image-wrapper .dr-safa-quote blockquote::after {
+        content: '"';
+        font-size: 3rem;
+        color: #4CAF50;
+        opacity: 0.5;
+        position: absolute;
+        font-family: Georgia, serif;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote blockquote::before {
+        left: -10px;
+        top: -1rem;
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote blockquote::after {
+        right: -10px;
+        bottom: -2rem;
+    }
+    
+    .dr-safa-image-wrapper .dr-safa-quote cite {
+        display: block !important;
+        font-size: 1rem;
+        color: #333;
+        font-style: normal;
+        margin-top: 1rem;
+        font-weight: 500;
+        transform: none !important;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
     }
 }
 
