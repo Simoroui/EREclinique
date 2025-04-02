@@ -148,31 +148,31 @@ document.addEventListener('DOMContentLoaded', () => {
         function handleMouseMove(e) {
             if (isMobileView()) return; // Désactiver complètement sur mobile
             
-            const rect = methodeEreSection.getBoundingClientRect();
-            const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-            const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+                const rect = methodeEreSection.getBoundingClientRect();
+                const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+                const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
 
-            // Effet sur les grandes lettres
-            document.querySelectorAll('.ere-letter').forEach((letter, index) => {
-                const depthFactor = 50 + (index * 10);
-                letter.style.transform = `translateY(-50%) translateX(${mouseX * depthFactor}px) translateZ(-100px) rotateY(${mouseX * 15}deg)`;
-            });
+                // Effet sur les grandes lettres
+                document.querySelectorAll('.ere-letter').forEach((letter, index) => {
+                    const depthFactor = 50 + (index * 10);
+                    letter.style.transform = `translateY(-50%) translateX(${mouseX * depthFactor}px) translateZ(-100px) rotateY(${mouseX * 15}deg)`;
+                });
 
-            // Effet sur les contenus
-            document.querySelectorAll('.ere-content').forEach((content, index) => {
-                const depthFactor = 20 - (index * 5);
-                content.style.transform = `translateZ(20px) translateX(${mouseX * depthFactor}px) rotateY(${-mouseX * 5}deg)`;
-            });
+                // Effet sur les contenus
+                document.querySelectorAll('.ere-content').forEach((content, index) => {
+                    const depthFactor = 20 - (index * 5);
+                    content.style.transform = `translateZ(20px) translateX(${mouseX * depthFactor}px) rotateY(${-mouseX * 5}deg)`;
+                });
 
-            // Effet sur les images
-            document.querySelectorAll('.ere-image').forEach(image => {
-                image.style.transform = `translateZ(15px) translateX(${-mouseX * 15}px) translateY(${-mouseY * 15}px)`;
-            });
+                // Effet sur les images
+                document.querySelectorAll('.ere-image').forEach(image => {
+                    image.style.transform = `translateZ(15px) translateX(${-mouseX * 15}px) translateY(${-mouseY * 15}px)`;
+                });
 
-            // Effet sur le titre
-            const ereTitle = document.querySelector('.ere-title');
-            if (ereTitle) {
-                ereTitle.style.transform = `translateY(${mouseY * 10}px) translateX(${mouseX * 10}px)`;
+                // Effet sur le titre
+                const ereTitle = document.querySelector('.ere-title');
+                if (ereTitle) {
+                    ereTitle.style.transform = `translateY(${mouseY * 10}px) translateX(${mouseX * 10}px)`;
             }
         }
         
@@ -185,15 +185,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.ere-letter').forEach(letter => {
                 letter.style.transform = 'translateY(-50%) translateZ(-100px)';
             });
-            
+
             document.querySelectorAll('.ere-content').forEach(content => {
                 content.style.transform = '';
             });
-            
+
             document.querySelectorAll('.ere-image').forEach(image => {
                 image.style.transform = 'translateZ(15px)';
             });
-            
+
             const ereTitle = document.querySelector('.ere-title');
             if (ereTitle) {
                 ereTitle.style.transform = '';
