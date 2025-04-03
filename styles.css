@@ -2027,4 +2027,858 @@ footer {
     .qualification-item span {
         font-size: 0.85rem;
     }
+}
+
+/* Section Réservation */
+.reservation-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(145deg, rgba(128, 141, 97, 0.35), rgba(245, 237, 220, 0.8));
+    padding: 6rem 2rem;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.reservation-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pattern-bg.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.reservation-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(156, 170, 125, 0.15), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(245, 237, 220, 0.2), transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.reservation-title-container {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 5;
+}
+
+.reservation-title {
+    font-size: 3.2rem;
+    color: var(--color-dark-green);
+    position: relative;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: titleFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.reservation-subtitle {
+    font-size: 1.8rem;
+    color: #555;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+}
+
+.reservation-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+.reservation-form-wrapper {
+    flex: 1 1 650px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding: 3rem;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.reservation-form-wrapper:hover {
+    transform: translateZ(10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.reservation-form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, rgba(128, 141, 97, 0.9), rgba(156, 170, 125, 0.7));
+}
+
+.reservation-form {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.form-step {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.form-step[data-step="1"] {
+    display: block;
+}
+
+.form-step h3 {
+    font-size: 1.8rem;
+    color: var(--color-dark-green);
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.form-step h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-dark-green);
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.form-group.half {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 200px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.form-group:focus-within label {
+    color: var(--color-dark-green);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgba(128, 141, 97, 0.8);
+    box-shadow: 0 0 0 3px rgba(128, 141, 97, 0.15);
+    background-color: #fff;
+}
+
+.date-time-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.date-picker-container,
+.time-picker-container {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 200px;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.radio-label,
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: rgba(128, 141, 97, 0.1);
+    transition: all 0.3s ease;
+}
+
+.radio-label:hover,
+.checkbox-label:hover {
+    background-color: rgba(128, 141, 97, 0.2);
+}
+
+.radio-label input,
+.checkbox-label input {
+    margin-right: 0.5rem;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+}
+
+button.form-prev,
+button.form-next,
+button.submit-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.form-prev {
+    background-color: #e0e0e0;
+    color: #444;
+}
+
+button.form-prev:hover {
+    background-color: #d0d0d0;
+}
+
+button.form-next,
+button.submit-button {
+    background-color: rgba(128, 141, 97, 0.9);
+    color: white;
+}
+
+button.form-next:hover,
+button.submit-button:hover {
+    background-color: rgba(128, 141, 97, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button.submit-button {
+    background: linear-gradient(135deg, rgba(128, 141, 97, 0.9), rgba(156, 170, 125, 0.8));
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.form-progress-container {
+    margin-top: 3rem;
+}
+
+.form-progress-bar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 100%;
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+.progress-step {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #888;
+    position: relative;
+    z-index: 5;
+    transition: all 0.5s ease;
+}
+
+.progress-step.active {
+    border-color: rgba(128, 141, 97, 0.9);
+    background-color: rgba(128, 141, 97, 0.9);
+    color: white;
+}
+
+.progress-step.completed {
+    border-color: rgba(128, 141, 97, 0.9);
+    background-color: white;
+    color: rgba(128, 141, 97, 0.9);
+}
+
+.progress-step.completed::after {
+    content: '✓';
+    position: absolute;
+}
+
+.reservation-image {
+    flex: 1 1 450px;
+    position: relative;
+    min-height: 500px;
+    perspective: 1000px;
+}
+
+.reservation-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    transform: translateZ(0) rotate(0deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reservation-image:hover .reservation-img {
+    transform: translateZ(40px) rotate(-2deg);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-card {
+    position: absolute;
+    bottom: 30px;
+    right: -30px;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateZ(20px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.reservation-image:hover .reservation-card {
+    transform: translateZ(80px) translateX(-20px);
+}
+
+.reservation-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-dark-green);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.reservation-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.reservation-card li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.reservation-card i {
+    color: rgba(128, 141, 97, 0.9);
+    margin-right: 0.5rem;
+}
+
+/* Animation pour faire apparaître le formulaire */
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Réglages responsive pour la section réservation */
+@media (max-width: 768px) {
+    .reservation-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .reservation-title {
+        font-size: 2.5rem;
+    }
+    
+    .reservation-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .reservation-container {
+        gap: 3rem;
+    }
+    
+    .reservation-form-wrapper {
+        padding: 2rem;
+    }
+    
+    .form-step h3 {
+        font-size: 1.5rem;
+    }
+    
+    .reservation-card {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .reservation-image {
+        min-height: auto;
+    }
+    
+    .reservation-image:hover .reservation-img,
+    .reservation-image:hover .reservation-card {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservation-section {
+        padding: 3rem 1rem;
+    }
+    
+    .reservation-title {
+        font-size: 2rem;
+    }
+    
+    .reservation-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .form-step h3 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+    
+    button.form-prev, 
+    button.form-next {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    button.submit-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .progress-step {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+} 
+
+/* Section Contact */
+.contact-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(145deg, rgba(245, 237, 220, 0.7), rgba(128, 141, 97, 0.25));
+    padding: 6rem 2rem;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/pattern-bg.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(156, 170, 125, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(245, 237, 220, 0.2), transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.contact-title-container {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 5;
+}
+
+.contact-title {
+    font-size: 3.2rem;
+    color: rgba(128, 141, 97, 0.9);
+    position: relative;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: titleFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.contact-subtitle {
+    font-size: 1.8rem;
+    color: #555;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: titleFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+.contact-info {
+    flex: 1 1 500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.contact-card-header {
+    margin-bottom: 1.5rem;
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    color: rgba(128, 141, 97, 0.8);
+    margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.contact-card p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: rgba(128, 141, 97, 0.1);
+    color: rgba(128, 141, 97, 0.9);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    border: 1px solid rgba(128, 141, 97, 0.2);
+}
+
+.contact-button:hover {
+    background: rgba(128, 141, 97, 0.8);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    grid-column: 1 / -1;
+    transition: all 0.3s ease;
+}
+
+.contact-form-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.contact-form-card h3 {
+    font-size: 1.8rem;
+    color: rgba(128, 141, 97, 0.9);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+}
+
+.contact-form-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: rgba(128, 141, 97, 0.6);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form .form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.contact-form .form-group {
+    flex: 1 1 100%;
+}
+
+.contact-form .form-group.half {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 200px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(128, 141, 97, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(128, 141, 97, 0.6);
+    box-shadow: 0 0 0 3px rgba(128, 141, 97, 0.1);
+    background: white;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-submit {
+    align-self: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, rgba(128, 141, 97, 0.9), rgba(156, 170, 125, 0.8));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.contact-submit:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-map {
+    flex: 1 1 500px;
+    min-height: 400px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.contact-map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 141, 97, 0.1);
+    pointer-events: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-map:hover .map-overlay {
+    background: rgba(128, 141, 97, 0.05);
+}
+
+@media (max-width: 1200px) {
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .contact-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-map {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .contact-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+    
+    .contact-form-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-map {
+        min-height: 300px;
+    }
 } 

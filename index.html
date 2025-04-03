@@ -83,6 +83,7 @@
                 <li><a href="#methode-ere" style="font-family: 'Grown', 'Playfair Display', serif; letter-spacing: 0.02em; font-weight: 500; font-size: 1.15em;">La méthode ERE</a></li>
                 <li><a href="#nos-soins" style="font-family: 'Grown', 'Playfair Display', serif; letter-spacing: 0.02em; font-weight: 500; font-size: 1.15em;">Nos Soins</a></li>
                 <li><a href="#notre-equipe" style="font-family: 'Grown', 'Playfair Display', serif; letter-spacing: 0.02em; font-weight: 500; font-size: 1.15em;">Notre Équipe</a></li>
+                <li><a href="#reservation" style="font-family: 'Grown', 'Playfair Display', serif; letter-spacing: 0.02em; font-weight: 500; font-size: 1.15em;">Réservation</a></li>
                 <li><a href="#contact" style="font-family: 'Grown', 'Playfair Display', serif; letter-spacing: 0.02em; font-weight: 500; font-size: 1.15em;">Contact</a></li>
             </ul>
         </nav>
@@ -359,15 +360,261 @@
         </div>
     </section>
 
-    <section id="contact" class="content-section">
-        <h2>Contactez-nous</h2>
-        <div class="contact-form">
-            <form>
-                <input type="text" placeholder="Nom" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
+    <section id="reservation" class="reservation-section">
+        <div class="reservation-title-container">
+            <h2 class="reservation-title" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: normal !important;">Retrouvez votre équilibre naturel sans régimes restrictifs</h2>
+            <div class="reservation-subtitle">Réserver votre rendez-vous</div>
+        </div>
+        
+        <div class="reservation-container">
+            <div class="reservation-form-wrapper">
+                <form id="rdv-form" class="reservation-form">
+                    <div class="form-step" data-step="1">
+                        <h3>Choix du soin</h3>
+                        <div class="form-group">
+                            <label for="soin">Type de soin</label>
+                            <select id="soin" name="soin" required>
+                                <option value="" selected disabled>Choisissez un soin</option>
+                                <option value="soin1">Consultation Nutrition</option>
+                                <option value="soin2">Bilan Métabolique</option>
+                                <option value="soin3">Suivi Personnalisé</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group date-time-group">
+                            <div class="date-picker-container">
+                                <label for="date">Date du rendez-vous</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="time-picker-container">
+                                <label for="time">Heure du rendez-vous</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-nav">
+                            <button type="button" class="form-next" data-goto="2">Étape suivante</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" data-step="2">
+                        <h3>Informations personnelles</h3>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nom">Nom de famille</label>
+                            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required>
+                        </div>
+                        
+                        <div class="form-nav">
+                            <button type="button" class="form-prev" data-goto="1">Étape précédente</button>
+                            <button type="button" class="form-next" data-goto="3">Étape suivante</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" data-step="3">
+                        <h3>Informations de santé</h3>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="age">Âge (ans)</label>
+                                <input type="number" id="age" name="age" min="18" max="120" required>
+                            </div>
+                            
+                            <div class="form-group half">
+                                <label for="taille">Taille (m)</label>
+                                <input type="number" id="taille" name="taille" step="0.01" min="1" max="2.5" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="poids-actuel">Poids actuel (kg)</label>
+                                <input type="number" id="poids-actuel" name="poids-actuel" step="0.1" min="30" max="300" required>
+                            </div>
+                            
+                            <div class="form-group half">
+                                <label for="poids-cible">Poids cible (kg)</label>
+                                <input type="number" id="poids-cible" name="poids-cible" step="0.1" min="30" max="300" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="antecedents">Antécédents médicaux</label>
+                            <textarea id="antecedents" name="antecedents" placeholder="Veuillez indiquer vos antécédents médicaux si applicable"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Genre</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="genre" value="homme" required> Homme
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="genre" value="femme"> Femme
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="activite">Niveau d'activité physique</label>
+                            <select id="activite" name="activite" required>
+                                <option value="" selected disabled>Sélectionnez votre niveau</option>
+                                <option value="sedentaire">Sédentaire (peu ou pas d'exercice)</option>
+                                <option value="leger">Légèrement actif (exercice léger 1-3 jours/semaine)</option>
+                                <option value="modere">Modérément actif (exercice modéré 3-5 jours/semaine)</option>
+                                <option value="actif">Très actif (exercice intense 6-7 jours/semaine)</option>
+                                <option value="extreme">Extrêmement actif (exercice très intense, entraînement physique)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-nav">
+                            <button type="button" class="form-prev" data-goto="2">Étape précédente</button>
+                            <button type="button" class="form-next" data-goto="4">Étape suivante</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" data-step="4">
+                        <h3>Objectifs</h3>
+                        <div class="form-group">
+                            <label>Sélectionnez vos objectifs</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="objectifs" value="perte-poids"> Perte de poids
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="objectifs" value="masse-musculaire"> Prise de masse musculaire
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="objectifs" value="performance"> Performance sportive
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="objectifs" value="equilibre-metabolique"> Équilibre métabolique
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="objectifs" value="reequilibrage-alimentaire"> Rééquilibrage alimentaire
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="commentaire">Commentaires supplémentaires</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="Si vous avez des informations complémentaires à nous communiquer..."></textarea>
+                        </div>
+                        
+                        <div class="form-nav">
+                            <button type="button" class="form-prev" data-goto="3">Étape précédente</button>
+                            <button type="submit" class="submit-button">Réserver mon rendez-vous</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="form-progress-container">
+                    <div class="form-progress-bar">
+                        <div class="progress-step active" data-step="1">1</div>
+                        <div class="progress-step" data-step="2">2</div>
+                        <div class="progress-step" data-step="3">3</div>
+                        <div class="progress-step" data-step="4">4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reservation-image">
+                <img src="images/d6d857c7-3482-4cd4-a574-a57099357691.jpg" alt="Nutrition et bien-être" class="reservation-img">
+                <div class="reservation-card">
+                    <h3>Pourquoi nous choisir ?</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Approche personnalisée</li>
+                        <li><i class="fas fa-check-circle"></i> Résultats durables</li>
+                        <li><i class="fas fa-check-circle"></i> Suivi régulier</li>
+                        <li><i class="fas fa-check-circle"></i> Sans régime restrictif</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-title-container">
+            <h2 class="contact-title" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: normal !important;">Contactez-nous</h2>
+            <div class="contact-subtitle">Nous sommes à votre écoute</div>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Téléphone</h3>
+                    </div>
+                    <p>50 720 660</p>
+                    <a href="tel:+21650720660" class="contact-button">Appeler</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                    </div>
+                    <p>autotechtunis@gmail.com</p>
+                    <a href="mailto:autotechtunis@gmail.com" class="contact-button">Envoyer un email</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Adresse</h3>
+                    </div>
+                    <p>Rue Jaber Ben Hayane,<br>2046 Tunis, Tunisie</p>
+                    <a href="https://maps.google.com/?q=Rue+Jaber+Ben+Hayane,+2046+Tunis,+Tunisie" target="_blank" class="contact-button">Voir sur Google Maps</a>
+                </div>
+                
+                <div class="contact-form-card">
+                    <h3>Laissez-nous un message</h3>
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" placeholder="Nom" required>
+                            </div>
+                            <div class="form-group half">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" required rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="contact-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.906528014622!2d10.176973715141576!3d36.84293047223722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd34941e9f6f67%3A0xd671924423b19b35!2sRue%20Jaber%20Ibn%20Hayyan%2C%20Tunis%2C%20Tunisia!5e0!3m2!1sen!2sus!4v1650095166889!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-overlay"></div>
+            </div>
         </div>
     </section>
 
