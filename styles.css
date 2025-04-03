@@ -1023,7 +1023,7 @@ footer {
 .soins-section {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f0f0e0, #e0e8e0);
+    background: linear-gradient(135deg, rgba(128, 141, 97, 0.25), rgba(245, 237, 220, 0.7));
     padding: 6rem 2rem;
     overflow: hidden;
     perspective: 1200px;
@@ -1039,19 +1039,50 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/texture-bg.png');
-    background-repeat: repeat;
-    background-size: 200px;
-    opacity: 0.1;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(128, 141, 97, 0.15) 0%, rgba(128, 141, 97, 0.15) 5%, transparent 5.5%),
+        radial-gradient(circle at 80% 40%, rgba(128, 141, 97, 0.1) 0%, rgba(128, 141, 97, 0.1) 4%, transparent 4.5%),
+        radial-gradient(circle at 40% 60%, rgba(128, 141, 97, 0.12) 0%, rgba(128, 141, 97, 0.12) 6%, transparent 6.5%),
+        radial-gradient(circle at 75% 85%, rgba(128, 141, 97, 0.08) 0%, rgba(128, 141, 97, 0.08) 5%, transparent 5.5%),
+        linear-gradient(45deg, transparent 48%, rgba(128, 141, 97, 0.05) 49%, rgba(128, 141, 97, 0.05) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(128, 141, 97, 0.05) 49%, rgba(128, 141, 97, 0.05) 51%, transparent 52%);
+    background-size: 300px 300px, 250px 250px, 350px 350px, 280px 280px, 50px 50px, 50px 50px;
+    opacity: 1;
     z-index: 0;
     pointer-events: none;
-    will-change: transform;
-    animation: floatingBackground 60s infinite linear;
+    animation: patternMove 120s infinite linear;
 }
 
-@keyframes floatingBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 200px 200px; }
+.soins-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%),
+        linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes patternMove {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    25% {
+        background-position: 150px -50px, -100px 100px, 50px 50px, -75px -75px, 25px 25px, -25px -25px;
+    }
+    50% {
+        background-position: 100px -100px, -200px 200px, 100px 100px, -150px -150px, 50px 50px, -50px -50px;
+    }
+    75% {
+        background-position: 50px -150px, -100px 300px, 150px 150px, -75px -225px, 75px 75px, -75px -75px;
+    }
+    100% {
+        background-position: 0 -200px, 0 400px, 200px 200px, 0 -300px, 100px 100px, -100px -100px;
+    }
 }
 
 .soins-title-container {
