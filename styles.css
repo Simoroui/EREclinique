@@ -109,23 +109,33 @@ section {
     position: relative;
     height: 100vh;
     overflow: hidden;
-    perspective: 1000px;
-    z-index: 1;
-    background-color: #808080; /* Fond gris qui apparaîtra quand l'image descend */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
-.hero-image {
-    position: fixed; /* Position fixée pour créer l'effet parallax */
+.hero-parallax-container {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 120%;
-    object-fit: cover;
-    will-change: transform;
+    height: 100%;
+    overflow: hidden;
     z-index: 1;
+}
+
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 120%; /* Hauteur plus grande pour permettre le mouvement vers le bas */
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); /* Transition plus lente et plus douce avec cubic-bezier */
+    transform: translateY(0);
 }
 
 .hero-logo-image {
@@ -170,7 +180,7 @@ section {
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 5;
     text-align: center;
     max-width: 85%;
     margin: 0 auto;
@@ -1169,6 +1179,7 @@ footer {
 .soin-icon i {
     background: linear-gradient(135deg, #2E8B57, #3CB371);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
     transition: all 0.5s ease;

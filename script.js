@@ -11,6 +11,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const methodeEreSection = document.getElementById('methode-ere');
     const soinsSection = document.getElementById('nos-soins');
     const equipeSection = document.getElementById('notre-equipe');
+    const drSafaSection = document.getElementById('dr-safa');
+    
+    // Effet parallaxe pour l'image hero
+    const heroImage = document.querySelector('.hero-image');
+    let lastScrollY = window.scrollY || 0;
+    let ticking = false;
+    
+    // Fonction pour l'effet parallaxe de l'image hero
+    function updateHeroImageParallax() {
+        if (!heroImage || !heroSection) return;
+        
+        const scrollY = window.scrollY;
+        
+        // Calculer la position de l'élément hero pour n'appliquer l'effet que lorsqu'il est visible
+        const heroRect = heroSection.getBoundingClientRect();
+        
+        // Appliquer l'effet parallaxe uniquement si la section hero est visible
+        if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
+            // Calculer le déplacement en Y basé sur le défilement
+            const translateY = scrollY * 0.4;
+            
+            // Appliquer la transformation
+            heroImage.style.transform = `translateY(${translateY}px)`;
+            
+            lastScrollY = scrollY;
+        }
+        
+        ticking = false;
+    }
+    
+    // Optimiser les performances en utilisant requestAnimationFrame pour l'image hero
+    function onHeroScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateHeroImageParallax);
+            ticking = true;
+        }
+    }
+    
+    // Ajouter l'écouteur d'événement pour l'image hero
+    window.addEventListener('scroll', onHeroScroll, { passive: true });
+    
+    // Initialiser l'effet au chargement
+    updateHeroImageParallax();
     
     // Fonction pour activer les éléments de la Méthode ERE
     function activateEreElements() {
