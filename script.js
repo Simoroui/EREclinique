@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Optimiser les performances en utilisant requestAnimationFrame pour l'image hero
     function onHeroScroll() {
-        if (!ticking) {
+            if (!ticking) {
             requestAnimationFrame(updateHeroImageParallax);
-            ticking = true;
-        }
+                ticking = true;
+            }
     }
     
     // Ajouter l'écouteur d'événement pour l'image hero
