@@ -297,4 +297,175 @@ document.addEventListener('DOMContentLoaded', () => {
             equipeObserver.observe(card);
         });
     }
+
+    // Formulaire de réservation multi-étapes
+    const reservationForm = document.querySelector('.reservation-form');
+    if (!reservationForm) return;
+
+    console.log('Initialisation du formulaire de réservation v1.0');
+
+    const formSteps = document.querySelectorAll('.form-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    const nextButtons = document.querySelectorAll('.form-next');
+    const prevButtons = document.querySelectorAll('.form-prev');
+    const submitButton = document.querySelector('.submit-button');
+
+    let currentStep = 1;
+    const totalSteps = formSteps.length;
+
+    // Initialiser les étapes et la barre de progression
+    function initForm() {
+        // Cacher toutes les étapes sauf la première
+        formSteps.forEach(step => {
+            step.style.display = 'none';
+        });
+        formSteps[0].style.display = 'block';
+        
+        // Mettre à jour la barre de progression
+        updateProgressBar();
+        
+        // Animation d'apparition du formulaire
+        formSteps[0].style.animation = 'formAppear 0.8s ease forwards';
+    }
+
+    // Mettre à jour la barre de progression
+    function updateProgressBar() {
+        progressSteps.forEach((step, index) => {
+            if (index + 1 < currentStep) {
+                step.classList.add('completed');
+                step.classList.remove('active');
+            } else if (index + 1 === currentStep) {
+                step.classList.add('active');
+                step.classList.remove('completed');
+            } else {
+                step.classList.remove('active', 'completed');
+            }
+        });
+    }
+
+    // Aller à l'étape suivante
+    function goToNextStep() {
+        if (validateCurrentStep()) {
+            if (currentStep < totalSteps) {
+                formSteps[currentStep - 1].style.display = 'none';
+                formSteps[currentStep].style.display = 'block';
+                formSteps[currentStep].style.animation = 'formAppear 0.5s ease forwards';
+                currentStep++;
+                updateProgressBar();
+            }
+        }
+    }
+
+    // Aller à l'étape précédente
+    function goToPrevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            formSteps[currentStep].style.display = 'none';
+            formSteps[currentStep - 1].style.display = 'block';
+            formSteps[currentStep - 1].style.animation = 'formAppear 0.5s ease forwards';
+            updateProgressBar();
+        }
+    }
+
+    // Valider l'étape actuelle
+    function validateCurrentStep() {
+        const currentFormStep = formSteps[currentStep - 1];
+        const requiredFields = currentFormStep.querySelectorAll('[required]');
+        
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('error');
+                
+                // Ajouter une animation d'erreur
+                field.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    field.style.animation = '';
+                }, 500);
+                
+                // Créer ou mettre à jour le message d'erreur
+                let errorMsg = field.nextElementSibling;
+                if (!errorMsg || !errorMsg.classList.contains('error-message')) {
+                    errorMsg = document.createElement('div');
+                    errorMsg.classList.add('error-message');
+                    errorMsg.style.color = '#e74c3c';
+                    errorMsg.style.fontSize = '0.85rem';
+                    errorMsg.style.marginTop = '0.25rem';
+                    field.parentNode.insertBefore(errorMsg, field.nextSibling);
+                }
+                errorMsg.textContent = 'Ce champ est requis';
+            } else {
+                field.classList.remove('error');
+                const errorMsg = field.nextElementSibling;
+                if (errorMsg && errorMsg.classList.contains('error-message')) {
+                    errorMsg.remove();
+                }
+            }
+        });
+        
+        return isValid;
+    }
+
+    // Gérer la soumission du formulaire
+    function handleSubmit(e) {
+        e.preventDefault();
+        
+        if (validateCurrentStep()) {
+            // Animation de chargement
+            submitButton.innerHTML = '<span class="loading-icon">⟳</span> Envoi en cours...';
+            submitButton.disabled = true;
+            
+            // Simuler un délai d'envoi (à remplacer par votre logique d'envoi réelle)
+            setTimeout(() => {
+                // Remplacer par votre logique d'envoi de formulaire
+                console.log('Formulaire envoyé avec succès!');
+                
+                // Afficher un message de succès
+                const formWrapper = document.querySelector('.reservation-form-wrapper');
+                formWrapper.innerHTML = `
+                    <div class="success-message" style="text-align: center; padding: 3rem 1rem;">
+                        <div class="success-icon" style="font-size: 4rem; color: rgba(128, 141, 97, 0.9); margin-bottom: 1.5rem;">✓</div>
+                        <h2 style="font-size: 2rem; color: rgba(128, 141, 97, 0.9); margin-bottom: 1rem;">Réservation Envoyée !</h2>
+                        <p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem;">Merci pour votre réservation. Nous vous contacterons prochainement pour confirmer votre rendez-vous.</p>
+                        <button class="new-reservation" style="background-color: rgba(128, 141, 97, 0.9); color: white; border: none; border-radius: 8px; padding: 0.8rem 1.5rem; cursor: pointer; font-weight: 500; transition: all 0.3s ease;">Nouvelle Réservation</button>
+                    </div>
+                `;
+                
+                // Ajouter un événement pour réinitialiser le formulaire
+                document.querySelector('.new-reservation').addEventListener('click', function() {
+                    window.location.reload();
+                });
+                
+            }, 2000);
+        }
+    }
+
+    // Initialiser le formulaire
+    initForm();
+
+    // Ajouter les écouteurs d'événements
+    nextButtons.forEach(button => {
+        button.addEventListener('click', goToNextStep);
+    });
+
+    prevButtons.forEach(button => {
+        button.addEventListener('click', goToPrevStep);
+    });
+
+    if (submitButton) {
+        submitButton.addEventListener('click', handleSubmit);
+    }
+
+    // Ajouter une animation CSS pour le shake
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(styleSheet);
 }); 
