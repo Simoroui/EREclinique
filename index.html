@@ -91,16 +91,13 @@
     <section id="accueil" class="hero-section">
         <img src="images/accueil.avif" alt="ERE Clinique - Hero" class="hero-image">
         <div class="hero-content">
-            <h1 class="hero-title grown-font" style="font-family: 'Grown', 'Playfair Display', serif !important; background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15)) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; padding: 20px 30px !important; border-radius: 15px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;">Bienvenue chez Ere Clinique</h1>
+            <div class="hero-logo-image" style="max-width: 500px; margin: 0 auto 30px auto;">
+                <img src="images/baniere.png" alt="ERE Clinique" style="width: 100%; height: auto; display: block;">
+            </div>
             <div class="hero-keywords">
                 <span class="keyword keyword-1" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Diète</span>
                 <span class="keyword keyword-2" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Nutrition du sportif</span>
                 <span class="keyword keyword-3" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Bien-être</span>
-            </div>
-        </div>
-        <div class="logo-overlay">
-            <div class="logo-container">
-                <img src="images/baniere.png" alt="Logo ERE Clinique" class="logo-image">
             </div>
         </div>
     </section>
@@ -389,22 +386,11 @@
         
         // Initialisation
         function init() {
-            title = document.querySelector('.hero-title');
+            title = document.querySelector('.hero-logo-image');
             img = document.querySelector('.hero-image');
             keywords = document.querySelectorAll('.keyword');
             
-            // Initialiser le logo pour qu'il soit en dessous du titre mais invisible
-            var logoOverlay = document.querySelector('.logo-overlay');
-            var heroTitle = document.querySelector('.hero-title');
-            
-            if (logoOverlay && heroTitle) {
-                // Position initiale en dessous du titre (pas besoin d'offset vertical supplémentaire)
-                logoOverlay.style.opacity = "0"; // Complètement invisible au départ
-                logoOverlay.style.transform = "translateX(0)"; // Pas de transformation initiale
-                console.log("Logo positionné en dessous du titre et invisible");
-            }
-            
-            // Initialiser le titre
+            // Initialiser le logo dans le héros
             setTimeout(function() {
                 if (title) {
                     title.style.transition = "none";
@@ -415,142 +401,75 @@
             
             // Initialiser les mots-clés avec des délais progressifs et directions
             keywords.forEach(function(keyword, index) {
+                keyword.style.transition = "none";
+                keyword.style.opacity = "0";
+                keyword.style.transform = "translateX(0)";
+                
                 setTimeout(function() {
-                    // Définir la direction pour chaque mot-clé
-                    if (index === 0) {
-                        // Premier mot-clé: "Diète" - vers la gauche
-                        keyword.setAttribute('data-direction', 'left');
-                    } else if (index === 1) {
-                        // Deuxième mot-clé: "Nutrition du sportif" - vers le bas
-                        keyword.setAttribute('data-direction', 'down');
-                    } else if (index === 2) {
-                        // Troisième mot-clé: "Bien-être" - vers la droite
-                        keyword.setAttribute('data-direction', 'right');
-                    }
-                    
-                    // Initialiser l'état de base
-                    keyword.style.transition = "none";
+                    keyword.style.transition = "all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) " + (index * 0.1) + "s";
                     keyword.style.opacity = "1";
-                    keyword.style.transform = "translate(0, 0)";
-                    
-                    console.log("Mot-clé " + index + " initialisé avec direction: " + keyword.getAttribute('data-direction'));
-                }, 100 + (index * 100)); // délai progressif pour chaque mot-clé
+                    keyword.style.transform = "translateX(0)";
+                }, 300 + (index * 100));
             });
             
-            // Démarrer l'animation
-            animateElements();
+            // Activer la transition après l'initialisation
+            setTimeout(function() {
+                if (title) {
+                    title.style.transition = "all 0.5s ease-out";
+                }
+            }, 100);
         }
         
-        // Animation continue basée sur la position de défilement
-        function animateElements() {
-            // Obtenir la position de défilement de façon explicite
-            var currentScrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        // Animation au défilement
+        function handleScroll() {
+            var currentScrollPosition = window.scrollY;
+            var scrollDelta = currentScrollPosition - lastScrollPosition;
+            totalScrolled += Math.abs(scrollDelta); // Incrémenter le total défil
             
-            // Vérifier si la position a changé
-            if (currentScrollPosition !== lastScrollPosition) {
-                // Elle a changé, mettre à jour le déplacement
-                console.log("Position de défilement: " + currentScrollPosition);
+            var scrollingDown = currentScrollPosition > lastScrollPosition;
+            lastScrollPosition = currentScrollPosition;
+            
+            // Animation du titre (déplacement vers le haut et disparition progressive lors du défilement)
+            if (title && currentScrollPosition > 50) {
+                var opacity = Math.max(1 - (currentScrollPosition / 500), 0);
+                var translateY = -currentScrollPosition * 0.4;
                 
-                // Mettre à jour la variable de défilement total
-                totalScrolled += (currentScrollPosition - lastScrollPosition);
-                
-                // Animer l'image vers le bas - vitesse réduite
-                if (img) {
-                    img.style.transform = "translateY(" + (currentScrollPosition * 0.3) + "px)";
-                }
-                
-                // Animation du logo avec position fixe par rapport à la section aboutSection
-                var logoOverlay = document.querySelector('.logo-overlay');
-                var heroSection = document.querySelector('.hero-section');
-                var aboutSection = document.querySelector('#about');
-                
-                if (logoOverlay && heroSection && aboutSection) {
-                    // Ne commence à apparaître qu'après avoir défilé de 50px
-                    var scrollThreshold = 50;
-                    
-                    // Calculer les positions des sections
-                    var heroRect = heroSection.getBoundingClientRect();
-                    var aboutRect = aboutSection.getBoundingClientRect();
-                    
-                    // Calculer la distance entre le haut de la fenêtre et le haut de la section about
-                    var distanceToAbout = aboutRect.top;
-                    
-                    if (currentScrollPosition <= scrollThreshold) {
-                        // Avant le seuil de défilement, logo invisible
-                        logoOverlay.style.opacity = "0";
-                        logoOverlay.style.transform = "translateX(0)";
-                    } else {
-                        // Après le seuil, logo visible
-                        
-                        // Calculer l'opacité progressive
-                        var logoOpacity = Math.min((currentScrollPosition - scrollThreshold) / 100, 1);
-                        
-                        // Calculer la position Y du logo
-                        // Quand on s'approche de la section about, on ajuste la position pour éviter qu'il disparaisse
-                        var targetPosition;
-                        
-                        if (distanceToAbout < 300) {
-                            // Approche de la section about
-                            // Calculer une position qui place le logo juste au-dessus de la section about
-                            // mais à une distance fixe pour rester visible
-                            targetPosition = distanceToAbout - 200;
-                            
-                            // S'assurer que le logo reste à une position visible
-                            targetPosition = Math.max(targetPosition, 100);
-                            
-                            // Forcer une opacité élevée
-                            logoOpacity = 1.0;
-                        } else {
-                            // Position normale pendant le défilement - vitesse réduite (0.35 au lieu de 0.65)
-                            targetPosition = Math.min(currentScrollPosition * 0.35, window.innerHeight * 0.6);
-                        }
-                        
-                        // Appliquer les transformations
-                        logoOverlay.style.opacity = logoOpacity;
-                        logoOverlay.style.transform = "translateX(" + (-targetPosition) + "px)";
-                    }
-                }
-                
-                // Animer le titre vers la gauche - vitesse réduite
-                if (title) {
-                    var moveX = -currentScrollPosition * 0.8; // Réduit de 2.0 à 0.8
-                    title.style.cssText = "opacity: 1; transform: translateX(" + moveX + "px) !important";
-                }
-                
-                // Animer chaque mot-clé en fonction de sa direction attribuée - vitesses réduites
-                keywords.forEach(function(keyword, index) {
-                    // Récupérer la direction depuis l'attribut data
-                    var direction = keyword.getAttribute('data-direction');
-                    
-                    // Appliquer les transformations en fonction de la direction
-                    if (direction === 'right') {
-                        // Déplacement horizontal positif (vers la droite) - vitesse réduite
-                        var speed = 0.7; // Réduit de 1.5 à 0.7
-                        var moveX = currentScrollPosition * speed;
-                        keyword.style.cssText = "opacity: 1; transform: translateX(" + moveX + "px) !important";
-                    } else if (direction === 'left') {
-                        // Déplacement horizontal négatif (vers la gauche) - vitesse réduite
-                        var moveX = -currentScrollPosition * 0.8; // Réduit de 1.8 à 0.8
-                        keyword.style.cssText = "opacity: 1; transform: translateX(" + moveX + "px) !important";
-                    } else if (direction === 'down') {
-                        // Déplacement vertical positif (vers le bas) - vitesse réduite
-                        var moveY = currentScrollPosition * 0.7; // Réduit de 1.5 à 0.7
-                        keyword.style.cssText = "opacity: 1; transform: translateY(" + moveY + "px) !important";
-                    }
-                });
-                
-                // Mettre à jour la dernière position
-                lastScrollPosition = currentScrollPosition;
+                title.style.opacity = opacity.toString();
+                title.style.transform = "translateY(" + translateY + "px)";
+            } else if (title) {
+                title.style.opacity = "1";
+                title.style.transform = "translateY(0)";
             }
             
-            // Continuer l'animation
-            requestAnimationFrame(animateElements);
+            // Animation de l'image (effet parallaxe léger)
+            if (img) {
+                var translateY = currentScrollPosition * 0.4;
+                img.style.transform = "translateY(" + translateY + "px)";
+            }
+            
+            // Animation des mots-clés (déplacements alternés et disparition progressive)
+            keywords.forEach(function(keyword, index) {
+                if (currentScrollPosition > 50) {
+                    var speed = 0.2 + (index * 0.05);
+                    var opacity = Math.max(1 - (currentScrollPosition / 600), 0);
+                    var direction = index % 2 === 0 ? -1 : 1;
+                    var translateX = direction * scrollingDown ? currentScrollPosition * 0.1 : -currentScrollPosition * 0.1;
+                    
+                    keyword.style.opacity = opacity.toString();
+                    keyword.style.transform = "translateX(" + translateX + "px)";
+                } else {
+                    keyword.style.opacity = "1";
+                    keyword.style.transform = "translateX(0)";
+                }
+            });
         }
         
-        // Initialiser dès que possible
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-        } else {
+        // Écouter les événements
+        window.addEventListener('load', init);
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initialiser si DOM est déjà chargé
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
             init();
         }
     })();
