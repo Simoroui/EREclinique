@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERE Clinique - Centre de Bien-être</title>
+    <title>ERE Clinique - Centre de bien-être et de beauté</title>
     <script src="force-font.js?v=1.1"></script>
     <script src="force-reload.js?v=1.1"></script>
-    <link rel="stylesheet" href="styles.css?v=2.0">
-    <link rel="stylesheet" href="dr-safa.css?v=3.1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dr-safa.css">
     <link rel="stylesheet" href="refresh.css?v=1.8">
-    <link rel="stylesheet" href="reset-cache.css?v=5.7">
+    <link rel="stylesheet" href="reset-cache.css?v=5.8">
     <link rel="stylesheet" href="force-reload.css?v=1.1">
-    <link rel="stylesheet" href="grown.css?v=1.1">
+    <link rel="stylesheet" href="grown.css?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://allfont.net/allfont.css?fonts=grown" rel="stylesheet">
+    <!-- Style de préchargement pour éviter le FOUC (Flash Of Unstyled Content) -->
     <style>
         @font-face {
             font-family: 'Grown';
@@ -34,9 +35,42 @@
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
         }
+        .preload-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5f5;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+        }
+        .preload-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(46, 125, 50, 0.2);
+            border-top: 5px solid #2E7D32;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        html.loading {
+            overflow: hidden;
+        }
     </style>
 </head>
-<body>
+<body class="loading">
+    <!-- Overlay de préchargement -->
+    <div class="preload-overlay" id="preload-overlay">
+        <div class="preload-spinner"></div>
+    </div>
+
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -526,5 +560,26 @@
     <script src="script.js"></script>
     <script src="dr-safa.js?v=7.0"></script>
     <script src="about-parallax.js?v=1.2"></script>
+    
+    <!-- Script de préchargement -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Attendre que toutes les ressources soient chargées
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            // Masquer l'overlay de préchargement
+            const overlay = document.getElementById('preload-overlay');
+            if (overlay) {
+              overlay.style.opacity = '0';
+              overlay.style.visibility = 'hidden';
+            }
+            // Permettre le défilement
+            document.documentElement.classList.remove('loading');
+            document.body.classList.remove('loading');
+            console.log("Page complètement chargée, overlay de préchargement retiré");
+          }, 300); // Un court délai pour s'assurer que tout est bien initialisé
+        });
+      });
+    </script>
 </body>
 </html> 
