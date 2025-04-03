@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dr-safa.css">
     <link rel="stylesheet" href="refresh.css?v=1.8">
-    <link rel="stylesheet" href="reset-cache.css?v=5.8">
+    <link rel="stylesheet" href="reset-cache.css?v=5.9">
     <link rel="stylesheet" href="force-reload.css?v=1.1">
     <link rel="stylesheet" href="grown.css?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -95,9 +95,9 @@
                 <img src="images/baniere.png" alt="ERE Clinique" style="width: 100%; height: auto; display: block;">
             </div>
             <div class="hero-keywords">
-                <span class="keyword keyword-1" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Diète</span>
-                <span class="keyword keyword-2" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Nutrition du sportif</span>
-                <span class="keyword keyword-3" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.02em; font-weight: 500;">Bien-être</span>
+                <span class="keyword keyword-1" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.05em; font-weight: 500; transform: translateX(0); transition: transform 0.05s ease-out, opacity 0.05s ease-out;">Diète</span>
+                <span class="keyword keyword-2" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.05em; font-weight: 500; transform: translateX(0); transition: transform 0.05s ease-out, opacity 0.05s ease-out;">Nutrition du sportif</span>
+                <span class="keyword keyword-3" style="font-family: 'Grown', 'Playfair Display', serif !important; letter-spacing: 0.05em; font-weight: 500; transform: translateX(0); transition: transform 0.05s ease-out, opacity 0.05s ease-out;">Bien-être</span>
             </div>
         </div>
     </section>
@@ -375,102 +375,107 @@
 
     <!-- Script parallaxe basique -->
     <script>
-    // Animation titre et mots-clés avec déplacement alterné
+    // Animation parallaxe pour le hero - v2.0
     (function() {
         // Variables
-        var title = null;
-        var img = null;
+        var logo = null;
+        var heroImg = null;
         var keywords = [];
         var lastScrollPosition = 0;
-        var totalScrolled = 0; // Pour suivre le défilement total
         
         // Initialisation
         function init() {
-            title = document.querySelector('.hero-logo-image');
-            img = document.querySelector('.hero-image');
+            logo = document.querySelector('.hero-logo-image');
+            heroImg = document.querySelector('.hero-image');
             keywords = document.querySelectorAll('.keyword');
             
-            // Initialiser le logo dans le héros
-            setTimeout(function() {
-                if (title) {
-                    title.style.transition = "none";
-                    title.style.opacity = "1";
-                    title.style.transform = "translateX(0)";
-                }
-            }, 100);
+            // S'assurer que les éléments sont visibles au départ
+            if (logo) {
+                logo.style.opacity = "1";
+                logo.style.transform = "translateY(0)";
+            }
             
-            // Initialiser les mots-clés avec des délais progressifs et directions
+            // Initialiser les mots-clés
             keywords.forEach(function(keyword, index) {
-                keyword.style.transition = "none";
-                keyword.style.opacity = "0";
+                keyword.style.opacity = "1";
                 keyword.style.transform = "translateX(0)";
                 
-                setTimeout(function() {
-                    keyword.style.transition = "all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) " + (index * 0.1) + "s";
-                    keyword.style.opacity = "1";
-                    keyword.style.transform = "translateX(0)";
-                }, 300 + (index * 100));
+                // Attribuer une direction: gauche pour les impairs, droite pour les pairs
+                if (index % 2 === 0) {
+                    keyword.setAttribute('data-direction', 'left');
+                } else {
+                    keyword.setAttribute('data-direction', 'right');
+                }
             });
             
-            // Activer la transition après l'initialisation
-            setTimeout(function() {
-                if (title) {
-                    title.style.transition = "all 0.5s ease-out";
-                }
-            }, 100);
+            console.log("Animation parallaxe hero initialisée v2.0");
         }
         
         // Animation au défilement
-        function handleScroll() {
-            var currentScrollPosition = window.scrollY;
-            var scrollDelta = currentScrollPosition - lastScrollPosition;
-            totalScrolled += Math.abs(scrollDelta); // Incrémenter le total défil
+        function handleScrollParallax() {
+            var scrollPosition = window.scrollY;
             
-            var scrollingDown = currentScrollPosition > lastScrollPosition;
-            lastScrollPosition = currentScrollPosition;
+            // Effet parallaxe pour l'image de fond (plus lent)
+            if (heroImg) {
+                var imgTranslateY = scrollPosition * 0.3; // Vitesse réduite pour effet plus subtil
+                heroImg.style.transform = `translateY(${imgTranslateY}px)`;
+            }
             
-            // Animation du titre (déplacement vers le haut et disparition progressive lors du défilement)
-            if (title && currentScrollPosition > 50) {
-                var opacity = Math.max(1 - (currentScrollPosition / 500), 0);
-                var translateY = -currentScrollPosition * 0.4;
+            // Effet parallaxe pour le logo: descend avec le défilement
+            if (logo && scrollPosition > 0) {
+                var logoTranslateY = scrollPosition * 0.5; // Plus rapide que l'image
+                var logoOpacity = Math.max(1 - (scrollPosition / 700), 0); // Disparaît progressivement
                 
-                title.style.opacity = opacity.toString();
-                title.style.transform = "translateY(" + translateY + "px)";
-            } else if (title) {
-                title.style.opacity = "1";
-                title.style.transform = "translateY(0)";
+                logo.style.transform = `translateY(${logoTranslateY}px)`;
+                logo.style.opacity = logoOpacity.toString();
+            } else if (logo) {
+                // Position initiale
+                logo.style.transform = "translateY(0)";
+                logo.style.opacity = "1";
             }
             
-            // Animation de l'image (effet parallaxe léger)
-            if (img) {
-                var translateY = currentScrollPosition * 0.4;
-                img.style.transform = "translateY(" + translateY + "px)";
-            }
-            
-            // Animation des mots-clés (déplacements alternés et disparition progressive)
+            // Effet parallaxe pour les mots-clés: se déplacent horizontalement
             keywords.forEach(function(keyword, index) {
-                if (currentScrollPosition > 50) {
-                    var speed = 0.2 + (index * 0.05);
-                    var opacity = Math.max(1 - (currentScrollPosition / 600), 0);
-                    var direction = index % 2 === 0 ? -1 : 1;
-                    var translateX = direction * scrollingDown ? currentScrollPosition * 0.1 : -currentScrollPosition * 0.1;
+                if (scrollPosition > 0) {
+                    var direction = keyword.getAttribute('data-direction') === 'left' ? -1 : 1;
+                    var speed = 0.8 + (index * 0.2); // Vitesse variable selon l'index
                     
+                    // Calcul du déplacement horizontal
+                    var translateX = direction * scrollPosition * speed;
+                    
+                    // Calcul de l'opacité
+                    var opacity = Math.max(1 - (scrollPosition / 800), 0);
+                    
+                    // Application des transformations
+                    keyword.style.transform = `translateX(${translateX}px)`;
                     keyword.style.opacity = opacity.toString();
-                    keyword.style.transform = "translateX(" + translateX + "px)";
                 } else {
-                    keyword.style.opacity = "1";
+                    // Position initiale
                     keyword.style.transform = "translateX(0)";
+                    keyword.style.opacity = "1";
                 }
             });
+            
+            // Mettre à jour la dernière position de défilement
+            lastScrollPosition = scrollPosition;
         }
         
-        // Écouter les événements
-        window.addEventListener('load', init);
-        window.addEventListener('scroll', handleScroll);
+        // Utiliser requestAnimationFrame pour des animations plus fluides
+        function animateParallax() {
+            handleScrollParallax();
+            requestAnimationFrame(animateParallax);
+        }
         
-        // Initialiser si DOM est déjà chargé
+        // Initialiser et démarrer l'animation
+        window.addEventListener('load', function() {
+            init();
+            animateParallax();
+        });
+        
+        // Initialiser si le DOM est déjà chargé
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
             init();
+            animateParallax();
         }
     })();
     </script>

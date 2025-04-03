@@ -134,7 +134,7 @@ section {
     max-width: 500px;
     margin: 0 auto 30px auto;
     opacity: 1;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: opacity 0.05s ease-out, transform 0.05s ease-out;
     will-change: transform, opacity;
 }
 
@@ -180,7 +180,7 @@ section {
 .hero-keywords {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
     margin-top: 2.5rem;
     width: 100%;
     position: relative;
@@ -188,47 +188,33 @@ section {
 }
 
 .keyword {
-    display: block;
-    color: #2E8B57;
-    font-size: 1.8rem;
-    font-weight: 500;
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
-    opacity: 0;
-    transform: translateY(20px);
-    position: relative;
-    padding: 10px 20px;
-    will-change: transform, opacity;
-    transition: opacity 0.75s ease;
-    border-bottom: 3px solid #2E8B57;
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    color: var(--color-dark-green);
+    border-radius: 30px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Grown', 'Playfair Display', serif;
-    letter-spacing: 0.02em;
+    transition: transform 0.05s ease-out, opacity 0.05s ease-out;
+    will-change: transform, opacity;
 }
 
 .keyword-1 {
-    transition: opacity 0.75s ease 1.25s;
+    background: linear-gradient(135deg, rgba(220, 255, 220, 0.9), rgba(220, 255, 220, 0.7));
     align-self: flex-start;
-    border-radius: 8px;
-    padding: 10px 20px;
 }
 
 .keyword-2 {
-    transition: opacity 0.75s ease 1.75s;
+    background: linear-gradient(135deg, rgba(220, 240, 255, 0.9), rgba(220, 240, 255, 0.7));
     align-self: center;
-    border-radius: 8px;
-    padding: 10px 20px;
 }
 
 .keyword-3 {
-    transition: opacity 0.75s ease 2.25s;
+    background: linear-gradient(135deg, rgba(255, 230, 230, 0.9), rgba(255, 230, 230, 0.7));
     align-self: flex-end;
-    border-radius: 8px;
-    padding: 10px 20px;
 }
 
 /* Style de la section parallax À propos */
@@ -887,6 +873,15 @@ footer {
     .parallax-content {
         padding: 1rem;
     }
+    
+    .keyword {
+        font-size: 1rem;
+        padding: 0.4rem 1.2rem;
+    }
+    
+    .hero-keywords {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -967,6 +962,15 @@ footer {
     
     .ere-content p {
         font-size: 0.9rem;
+    }
+    
+    .keyword {
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+    }
+    
+    .hero-keywords {
+        gap: 12px;
     }
 }
 
