@@ -2819,9 +2819,9 @@ button.submit-button {
 
 .contact-card i {
     font-size: 2.5rem;
-    color: #174e46;
+    color: rgba(128, 141, 97, 0.9);
     margin-bottom: 1.2rem;
-    text-shadow: 2px 2px 10px rgba(23, 78, 70, 0.1);
+    text-shadow: 2px 2px 10px rgba(128, 141, 97, 0.1);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -2850,18 +2850,18 @@ button.submit-button {
 .contact-button {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background: rgba(23, 78, 70, 0.1);
-    color: #174e46;
+    background: rgba(128, 141, 97, 0.1);
+    color: rgba(128, 141, 97, 0.9);
     border-radius: 30px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
     margin-top: auto;
-    border: 1px solid rgba(23, 78, 70, 0.2);
+    border: 1px solid rgba(128, 141, 97, 0.2);
 }
 
 .contact-button:hover {
-    background: #174e46;
+    background: rgba(128, 141, 97, 0.9);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -2886,7 +2886,7 @@ button.submit-button {
 
 .contact-form-card h3 {
     font-size: 1.8rem;
-    color: #174e46;
+    color: rgba(128, 141, 97, 0.9);
     margin-bottom: 2rem;
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -2901,7 +2901,7 @@ button.submit-button {
     transform: translateX(-50%);
     width: 60px;
     height: 2px;
-    background-color: #174e46;
+    background-color: rgba(128, 141, 97, 0.9);
     transition: width 0.5s ease;
 }
 
@@ -2953,7 +2953,7 @@ button.submit-button {
 .contact-submit {
     width: 100%;
     padding: 1rem;
-    background: linear-gradient(135deg, #174e46, #1a635a);
+    background: linear-gradient(135deg, rgba(128, 141, 97, 0.9), rgba(128, 141, 97, 0.8));
     color: white;
     border: none;
     border-radius: 10px;
@@ -2965,7 +2965,7 @@ button.submit-button {
 }
 
 .contact-submit:hover {
-    background: linear-gradient(135deg, #1a635a, #174e46);
+    background: linear-gradient(135deg, rgba(128, 141, 97, 0.8), rgba(128, 141, 97, 0.9));
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
